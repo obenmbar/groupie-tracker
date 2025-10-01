@@ -1,15 +1,16 @@
 package main
 
 import (
-	"fmt"
 	groupino "groupino/functions"
+	"log"
+	"net/http"
 )
 
 func main() {
-var slice groupino.Data
-err := groupino.FetchData("https://groupietrackers.herokuapp.com/api/artists",&slice.Artists)
-if err != nil {
-	panic(err)
+	http.HandleFunc("/",groupino.HomePage)
+	http.HandleFunc("/artist", groupino.ArtistPage)
+	http.HandleFunc("/style",groupino.Style)
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal(err)					
 }
-fmt.Println(slice)
 }

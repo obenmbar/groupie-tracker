@@ -2,7 +2,7 @@ package groupino
 
 type artist struct {
 	ID           int
-	name         string   `json:"name"`
+	Name         string   `json:"name"`
 	Image        string   `json:"image"`
 	Members      []string `json:"members"`
 	CreationDate int      `json:"creationDate"`
@@ -20,9 +20,9 @@ type location struct {
 }
 type date struct {
 	Id    int      `json:"id"`
-	dates []string `json:"dates"`
+	Dates []string `json:"dates"`
 }
 type relation struct {
 	Id           int              `json:"id"`
-	daterelation map[string][]int `json:"datesLocations"`
+	Daterelation map[string][]int `json:"datesLocations"`
 }

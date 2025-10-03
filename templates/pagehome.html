@@ -9,12 +9,12 @@
 </head>
 
 <body >
-    <div>
+    <div class="titele">
         <h1>groupie-tracker</h1>
     </div>
     <div class="allcard">
         {{range .}}
-        <a href="/artist?id={{.ID}}" style="text-decoration: none;color: black">
+        <a href="/artist?id={{.ID}}" > 
             <div class="card">
                 <img src="{{.Image}}">
                 <h2>{{.Name}}</h2>

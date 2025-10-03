@@ -1,7 +1,7 @@
 package groupino
 
-type artist struct {
-	ID           int
+type Artist struct {
+	ID           int      `json:"id"`
 	Name         string   `json:"name"`
 	Image        string   `json:"image"`
 	Members      []string `json:"members"`
@@ -12,17 +12,28 @@ type artist struct {
 	Relations    string   `json:"relations"`
 }
 type Data struct {
-	Artists []artist
+	Artists []Artist
 }
-type location struct {
+type Location struct {
 	Id       int      `json:"id"`
 	Location []string `json:"locations"`
 }
-type date struct {
+type Date struct {
 	Id    int      `json:"id"`
 	Dates []string `json:"dates"`
 }
-type relation struct {
+type Relation struct {
 	Id           int              `json:"id"`
-	Daterelation map[string][]int `json:"datesLocations"`
+	Daterelation map[string][]string `json:"datesLocations"`
+}
+type Global struct {
+	Artist   Artist
+	Location Location
+	Date     Date
+	Relation Relation
+}
+
+type Errorpage struct {
+	Mesege string
+	Status int 
 }

@@ -27,5 +27,6 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "500 internal server error ,, error en fetch data", http.StatusInternalServerError)
 		return
 	}
+
 	temp.Execute(w, Slicedata.Artists)
 }

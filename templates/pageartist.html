@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>GROUPIE-TRACKER</title>
+</head>
+
+<body>
+
+    <div><img src="{{.Artist.Image}}"></div>
+    <hr>
+    <DIV>
+        <H1>LES INFORMATION DE L'ARTIST</H1>
+        <ul>
+            <li>ID: {{.Artist.ID}}</li>
+            <li>NAME: {{.Artist.Name}}</li>
+            <li>CREATIONDATE: {{.Artist.CreationDate}}</li>
+            <li>FIRST ALBUME: {{.Artist.FirstAlbum}}</li>
+        </ul>
+        <p>MEMBERS: </p>
+        <ol>
+            {{range .Artist.Members}}
+            <li>{{.}}</li>
+            {{end}}
+        </ol>
+    </DIV>
+    <hr>
+    <div>
+        <H2>LOCATION</H2>
+
+        <ul>
+            {{range .Location.Location}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>CONSERTDATES</h2>
+
+        <ul>
+            {{range .Date.Dates}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <h2>RELATION:</h2>
+        <div class="relations">
+            {{ range $key, $value := .Relation.Daterelation }}
+            <details>
+                <summary>🔗 {{ $key }}</summary>
+                {{ range $value }}
+                <p>📅 {{.}}</p>
+                {{ end }}
+            </details>
+            {{ end }}
+        </div>
+    </div>
+</body>
+
+</html>

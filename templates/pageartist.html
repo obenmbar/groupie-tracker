@@ -4,62 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styleartist.css">
+
+                
     <title>GROUPIE-TRACKER</title>
 </head>
 
 <body>
+<div class="All">
 
-    <div><img src="{{.Artist.Image}}"></div>
+
+    <div class="img"><img src="{{.Artist.Image}}"></div>
     <hr>
-    <DIV>
-        <H1>LES INFORMATION DE L'ARTIST</H1>
-        <ul>
-            <li>ID: {{.Artist.ID}}</li>
-            <li>NAME: {{.Artist.Name}}</li>
-            <li>CREATIONDATE: {{.Artist.CreationDate}}</li>
-            <li>FIRST ALBUME: {{.Artist.FirstAlbum}}</li>
+    <div class="info">
+        <H1 class="titre">LES INFORMATION DE L'ARTIST</H1>
+      
+            <p class="font">ID: {{.Artist.ID}}</p>
+            <p class="font">NAME: {{.Artist.Name}}</p>
+            <p class="font">CREATIONDATE: {{.Artist.CreationDate}}</p>
+            <p class="font">FIRST ALBUME: {{.Artist.FirstAlbum}}</p>
         </ul>
-        <p>MEMBERS: </p>
-        <ol>
+        <h3 class="members">MEMBERS: </h3>
+       
             {{range .Artist.Members}}
-            <li>{{.}}</li>
+            <p class="font">🌿{{.}}</p>
             {{end}}
-        </ol>
-    </DIV>
+      
+    </div>
     <hr>
-    <div>
-        <H2>LOCATION</H2>
+    <div class="location">
+        <H2 class="titre">LOCATION</H2>
 
-        <ul>
+      
             {{range .Location.Location}}
-            <li>{{.}}</li>
+           <p class="font">{{.}}</p> 
             {{end}}
-        </ul>
+       
     </div>
     <hr>
-    <div>
-        <h2>CONSERTDATES</h2>
+    <div class="date">
+        <h2 class="titre">CONSERTDATES</h2>
 
-        <ul>
+        
             {{range .Date.Dates}}
-            <li>{{.}}</li>
+            <p class="font">{{.}}</p>
             {{end}}
-        </ul>
+        
     </div>
     <hr>
-    <div>
-        <h2>RELATION:</h2>
+    <div class="relation">
+        <h2 class="titre">RELATION:</h2>
         <div class="relations">
             {{ range $key, $value := .Relation.Daterelation }}
             <details>
-                <summary>🔗 {{ $key }}</summary>
+                <summary class="font">✳️ {{ $key }}</summary>
                 {{ range $value }}
                 <p>📅 {{.}}</p>
                 {{ end }}
             </details>
             {{ end }}
         </div>
+    </div>
+    
+    <span><a href="http://localhost:8080">Back To Home</a></span>
     </div>
 </body>
 

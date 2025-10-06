@@ -1,0 +1,11 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    background-image: url("image/error.png");
+
+}
+.code{
+    text-align: center;
+    color: red;
+    font-family:'Courier New', Courier, monospace;
+}

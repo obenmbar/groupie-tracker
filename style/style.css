@@ -5,6 +5,7 @@ body {
   color: #e0ffe0
  
 }
+
 .allcard{
 
  display: flex;
@@ -24,6 +25,7 @@ height:max-content;
 justify-content:center;
   align-items: center; 
     flex-wrap: wrap;
+    transition: transform 0.3s ease-in-out;
 }
 
 .titele{
@@ -45,7 +47,7 @@ justify-content:center;
     font-weight: 900;
     font-family: 'Times New Roman', Times, serif;
     border:  5px #0d1f0d solid;
-    border-radius: 50px;
+  border-radius: 30px;
     background-color:#0d1f0d;
     color: #00cc44;
 }
@@ -54,5 +56,10 @@ justify-content:center;
     -5px -5px 5px 10px #00cc44 ;
   background-color: #60df8a ;
     transition: 500ms;
+    transform: scale(1.05);
 
+}
+h1{
+font-family: 'Begika', sans-serif;
+font-size: clamp(2.5rem, 10vw, 4rem);
 }

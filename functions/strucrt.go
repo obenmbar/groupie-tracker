@@ -14,6 +14,7 @@ type Artist struct {
 type Data struct {
 	Artists []Artist
 }
+var lenn *int
 type Location struct {
 	Id       int      `json:"id"`
 	Location []string `json:"locations"`
@@ -24,7 +25,7 @@ type Date struct {
 }
 type Relation struct {
 	Id           int              `json:"id"`
-	Daterelation map[string][]string `json:"datesLocations"`
+	Daterelation   map[string][]string `json:"datesLocations"`
 }
 type Global struct {
 	Artist   Artist

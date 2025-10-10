@@ -81,5 +81,8 @@ span a:hover {
   span a {
     font-size: clamp(15px, 6vw, 40px);
     padding: 8px 20px;
+    display-wrap: wrap;
+    height: auto;
+    width: auto;
   }
 }

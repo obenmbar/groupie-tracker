@@ -1,6 +1,7 @@
 package groupino
 
 import (
+	"bytes"
 	"html/template"
 	"net/http"
 )
@@ -17,9 +18,17 @@ func RendError(w http.ResponseWriter, msgerror string, Code int) {
 		Status: Code,
 	}
 	w.WriteHeader(Code)
-	err = temp.Execute(w, Errorpage)
+
+	var buffer bytes.Buffer
+
+	err = temp.Execute(&buffer, Errorpage)
 	if err != nil {
-		http.Error(w, " 500 - error en execute le file ", 500)
+		RendError(w, "500 internal server error ", http.StatusInternalServerError)
+		return
+	}
+	_, err = buffer.WriteTo(w)
+	if err != nil {
+		RendError(w, "500 internal server error ", http.StatusInternalServerError)
 		return
 	}
 }

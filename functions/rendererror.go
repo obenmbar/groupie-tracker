@@ -5,27 +5,21 @@ import (
 	"net/http"
 )
 
-func RendError(w http.ResponseWriter, msgerror string, code int) {
-	Check("templates/pagerror.html")
-
+func RendError(w http.ResponseWriter, msgerror string, Code int) {
 	temp, err := template.ParseFiles("templates/pageerror.html")
 	if err != nil {
 		http.Error(w, " 500 - error en parsefile d'error", 500)
 		return
 	}
-	
 
 	Errorpage := Errorpage{
 		Mesege: msgerror,
-		Status: code,
+		Status: Code,
 	}
-
-
-	err = temp.Execute(w,Errorpage)
-	w.WriteHeader(code)
+	w.WriteHeader(Code)
+	err = temp.Execute(w, Errorpage)
 	if err != nil {
-			http.Error(w, " 500 - error en execute le file ", 500)
-			return
+		http.Error(w, " 500 - error en execute le file ", 500)
+		return
 	}
-		
 }

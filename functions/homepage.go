@@ -1,6 +1,7 @@
 package groupino
 
 import (
+	"bytes"
 	"html/template"
 	"net/http"
 )
@@ -22,13 +23,22 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var Slicedata Data
+
 	err1 := FetchData(url, &Slicedata.Artists)
+	lene := len(Slicedata.Artists)
+	lenn = &lene
 	if err1 != nil {
 		RendError(w, "500 internal server error , error en fetch data", http.StatusInternalServerError)
 		return
 	}
+	var buffer bytes.Buffer
 
-	err = temp.Execute(w, Slicedata.Artists)
+	err = temp.Execute(&buffer, Slicedata.Artists)
+	if err != nil {
+		RendError(w, "500 internal server error ", http.StatusInternalServerError)
+		return
+	}
+	_, err = buffer.WriteTo(w)
 	if err != nil {
 		RendError(w, "500 internal server error ", http.StatusInternalServerError)
 		return

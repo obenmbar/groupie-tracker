@@ -8,6 +8,8 @@ import (
 
 const url string = "https://groupietrackers.herokuapp.com/api/artists"
 
+// HomePage handles the main page of the website.
+// It fetches all artists from the API and displays them using the "pagehome.html" template.
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		RendError(w, "404 not found", http.StatusNotFound)

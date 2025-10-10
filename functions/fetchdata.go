@@ -6,7 +6,8 @@ import (
 	"net/http"
 )
 
-
+// FetchData sends an HTTP GET request to the given URL and decodes the JSON response into the provided data structure.
+// It returns an error if the request fails, the status code is not OK, or the JSON decoding encounters a problem.
 func FetchData(url string, datass any) error {
 	resp, err := http.Get(url)
 	if err != nil {

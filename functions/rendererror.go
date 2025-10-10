@@ -6,6 +6,8 @@ import (
 	"net/http"
 )
 
+// RendError renders a custom error page using the given message and HTTP status code.
+// It loads the "pageerror.html" template and displays the appropriate error message to the user.
 func RendError(w http.ResponseWriter, msgerror string, Code int) {
 	temp, err := template.ParseFiles("templates/pageerror.html")
 	if err != nil {

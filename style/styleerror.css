@@ -22,7 +22,7 @@ body {
 
 .code {
   color: red;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
   font-size: clamp(80px, 10vw, 200px);
   font-weight: bold;
   margin-bottom: 10px;
@@ -81,7 +81,6 @@ span a:hover {
   span a {
     font-size: clamp(15px, 6vw, 40px);
     padding: 8px 20px;
-    display-wrap: wrap;
     height: auto;
     width: auto;
   }

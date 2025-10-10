@@ -17,9 +17,8 @@
         {{range .}}
         <a href="/artist?id={{.ID}}" > 
             <div class="card">
-                <img src="{{.Image}}">
+                <img src="{{.Image}}" loading="lazy">
                 <h2>{{.Name}}</h2>
-                <br><br>
             </div>
         </a>
         {{end}}

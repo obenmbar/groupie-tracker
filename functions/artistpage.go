@@ -1,6 +1,7 @@
 package groupino
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -20,8 +21,7 @@ func ArtistPage(w http.ResponseWriter, r *http.Request) {
 	}
 	id := r.URL.Query().Get("id")
 	Id, erratoi := strconv.Atoi(id)
-	fmt.Println(Id)
-	if erratoi != nil || Id < 1 || Id > 52 {
+	if erratoi != nil || Id < 1 || Id > *lenn {
 		RendError(w, "404 not found id ", http.StatusNotFound)
 
 		return
@@ -37,8 +37,9 @@ func ArtistPage(w http.ResponseWriter, r *http.Request) {
 	location := artist.Locations
 	concertdate := artist.ConcertDates
 	relatio := artist.Relations
-	fmt.Println(relatio)
+
 	err2 := FetchData(location, &Locations)
+	defer Relations.Clear()
 	if err2 != nil {
 		RendError(w, "500 internal server error en fetch data de location", http.StatusInternalServerError)
 		return
@@ -65,11 +66,17 @@ func ArtistPage(w http.ResponseWriter, r *http.Request) {
 		RendError(w, "500 internale server error en parse file artist ", http.StatusInternalServerError)
 		return
 	}
-	// No code needed here for error.png or CSS.
-	// If you are missing error.png in your CSS, check your HTML template and static file paths.
-	err = tempp.Execute(w, GlobalStruct)
+
+	var buffer bytes.Buffer
+
+	err = tempp.Execute(&buffer, GlobalStruct)
 	if err != nil {
-		RendError(w, "500 internale server error en execute artist ", http.StatusInternalServerError)
+		RendError(w, "500 internal server error ", http.StatusInternalServerError)
+		return
+	}
+	_, err = buffer.WriteTo(w)
+	if err != nil {
+		RendError(w, "500 internal server error ", http.StatusInternalServerError)
 		return
 	}
 }

@@ -6,16 +6,22 @@ import (
 	"os"
 )
 const (
-	origin = "aaa7ae8ca3bca72c2642ecc577e2a8a8bee4e7492b1c8f967f6262e7437f32be"
+	origin = "f4e11ea07eda425ae3e5b91c23cd42941913d7219a3a3b90fcd46f80e06e4d73"
 	real   = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../image/error.png">
+    <link rel="stylesheet" href="../style/styleerror.css">
+    <title>PAGE ERROR</title>
 </head>
 <body>
-    
+    <h1>ERROR</h1>
+    <div class="code">{{.Code}}</div> 
+    <div class="messege">{{.Messege}}</div>
+    <br>
+    <span><a href="http://localhost:8080">Back To Home</a></span>
 </body>
 </html>`
 )

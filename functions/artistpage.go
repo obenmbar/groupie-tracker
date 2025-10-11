@@ -13,13 +13,12 @@ var (
 	Concertdate Date
 	Relations   Relation
 )
-	// ArtistPage handles the display of a specific artist's details page.
-	// It fetches data from the Groupie Tracker API based on the artist ID provided in the URL,
-	// retrieves related information (locations, concert dates, relations),
-	// and renders them using the "pageartist.html" template.
+
+// ArtistPage handles the display of a specific artist's details page.
+// It fetches data from the Groupie Tracker API based on the artist ID provided in the URL,
+// retrieves related information (locations, concert dates, relations),
+// and renders them using the "pageartist.html" template.
 func ArtistPage(w http.ResponseWriter, r *http.Request) {
-
-
 	// Check if the HTTP request method is GET; if not, return a 405 error
 	if r.Method != http.MethodGet {
 		RendError(w, "405-methode not allowed", http.StatusMethodNotAllowed)
@@ -28,18 +27,17 @@ func ArtistPage(w http.ResponseWriter, r *http.Request) {
 
 	// Get the artist ID from the URL query and validate it
 	id := r.URL.Query().Get("id")
-	fmt.Println("id recupere", id)
 
 	Id, erratoi := strconv.Atoi(id)
-	
-	if erratoi != nil || Id < 1 || Id > 52  {
+
+	if erratoi != nil || Id < 1 || Id > 52 {
 		RendError(w, "404 not found id ", http.StatusNotFound)
 		return
 	}
 
 	// Fetch the artist data from the API using the given ID
 	url := fmt.Sprintf("https://groupietrackers.herokuapp.com/api/artists/%d", Id)
-	fmt.Println("url genere", url)
+
 	var artist Artist
 	err1 := FetchData(url, &artist)
 	if err1 != nil {

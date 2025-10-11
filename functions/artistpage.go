@@ -28,14 +28,18 @@ func ArtistPage(w http.ResponseWriter, r *http.Request) {
 
 	// Get the artist ID from the URL query and validate it
 	id := r.URL.Query().Get("id")
+	fmt.Println("id recupere", id)
+
 	Id, erratoi := strconv.Atoi(id)
-	if erratoi != nil || Id < 1 || Id > *lenn {
+	
+	if erratoi != nil || Id < 1 || Id > 52  {
 		RendError(w, "404 not found id ", http.StatusNotFound)
 		return
 	}
 
 	// Fetch the artist data from the API using the given ID
 	url := fmt.Sprintf("https://groupietrackers.herokuapp.com/api/artists/%d", Id)
+	fmt.Println("url genere", url)
 	var artist Artist
 	err1 := FetchData(url, &artist)
 	if err1 != nil {
